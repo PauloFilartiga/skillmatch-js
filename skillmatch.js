@@ -51,3 +51,36 @@ const vagas = [
 
 console.log("\nLista de vagas:");
 console.log(vagas);
+
+function calcularCompatibilidade(candidato, vaga) {
+    const habilidadesEncontradas = vaga.requisitos.filter((requisito) => 
+        candidato.habilidades.includes(requisito)
+    );
+
+    const percentual = Math.round(
+        (habilidadesEncontradas.length / vaga.requisitos.length) *100
+    );
+
+    return {
+        empresa: vaga.empresa,
+        cargo: vaga.cargo,
+        requisitos: vaga.requisitos,
+        compatibilidade: percentual,
+        habilidadesEncontradas
+    };
+}
+
+const resultados = vagas.map((vaga) =>
+    calcularCompatibilidade(candidato, vaga)
+);
+
+console.log("\nResultados da análise:");
+
+resultados.forEach((resultado) => {
+    console.log(`\nEmpresa: ${resultado.empresa}`);
+    console.log(`Cargo: ${resultado.cargo}`);
+    console.log(`Requisitos: ${resultado.requisitos.join(", ")}`);
+    console.log(`Compatibilidade: ${resultado.compatibilidade}%`);
+    console.log(`Habilidades encontradas: ${resultado.habilidadesEncontradas.join(", ")}`
+    );
+});
