@@ -67,6 +67,10 @@ function calcularCompatibilidade(candidato, vaga) {
         candidato.habilidades.includes(requisito)
     );
 
+    const habilidadesFaltantes = vaga.requisitos.filter((requisito) =>
+      !candidato.habilidades.includes(requisito)
+      );
+
     const percentual = Math.round(
         (habilidadesEncontradas.length / vaga.requisitos.length) *100
     );
@@ -77,7 +81,8 @@ function calcularCompatibilidade(candidato, vaga) {
         requisitos: vaga.requisitos,
         compatibilidade: percentual,
         classificacao: classificarCompatibilidade(percentual),
-        habilidadesEncontradas
+        habilidadesEncontradas,
+        habilidadesFaltantes
     };
 }
 
@@ -93,6 +98,6 @@ resultados.forEach((resultado) => {
     console.log(`Requisitos: ${resultado.requisitos.join(", ")}`);
     console.log(`Compatibilidade: ${resultado.compatibilidade}%`);
     console.log(`Classificação: ${resultado.classificacao}`);
-    console.log(`Habilidades encontradas: ${resultado.habilidadesEncontradas.join(", ")}`
-    );
+    console.log(`Habilidades encontradas: ${resultado.habilidadesEncontradas.join(", ")}`);
+    console.log(`Habilidades faltantes: ${resultado.habilidadesFaltantes.length > 0 ? resultado.habilidadesFaltantes.join(", ") : "Nenhuma"}`)
 });
