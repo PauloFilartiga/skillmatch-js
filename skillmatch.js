@@ -90,6 +90,12 @@ const resultados = vagas.map((vaga) =>
     calcularCompatibilidade(candidato, vaga)
 );
 
+const melhorVaga = resultados.reduce((melhorResultado, resultadoAtual) => {
+  return resultadoAtual.compatibilidade > melhorResultado.compatibilidade 
+  ? resultadoAtual 
+  : melhorResultado;
+});
+
 console.log("\nResultados da análise:");
 
 resultados.forEach((resultado) => {
@@ -101,3 +107,7 @@ resultados.forEach((resultado) => {
     console.log(`Habilidades encontradas: ${resultado.habilidadesEncontradas.join(", ")}`);
     console.log(`Habilidades faltantes: ${resultado.habilidadesFaltantes.length > 0 ? resultado.habilidadesFaltantes.join(", ") : "Nenhuma"}`)
 });
+
+console.log("\nVaga mais compatível:");
+console.log(`${melhorVaga.empresa} - ${melhorVaga.cargo}`);
+console.log(`Compatibilidade: ${melhorVaga.compatibilidade}%`);
