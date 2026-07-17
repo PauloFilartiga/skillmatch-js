@@ -86,6 +86,26 @@ function calcularCompatibilidade(candidato, vaga) {
     };
 }
 
+function gerarRecomendacaoEstudo(resultado) {
+  const habilidadesParaEstudar = [];
+
+  for (let i = 0; i < resultado.length; i++) {
+    const habilidadesFaltantes = resultado[i].habilidadesFaltantes;
+
+    habilidadesFaltantes.forEach((habilidade) => {
+      if(!habilidadesParaEstudar.includes(habilidade)) {
+        habilidadesParaEstudar.push(habilidade);
+      }
+    });
+  }
+
+  if (habilidadesParaEstudar.length === 0) {
+    return "Você atende a todos os requisitos das vagas analizadas.";
+  }
+
+  return `Priorize estudar ${habilidadesParaEstudar.join(", ")}, pois esses conteúdos aparecem nas vagas analisadas.`;
+}
+
 const resultados = vagas.map((vaga) =>
     calcularCompatibilidade(candidato, vaga)
 );
@@ -95,6 +115,8 @@ const melhorVaga = resultados.reduce((melhorResultado, resultadoAtual) => {
   ? resultadoAtual 
   : melhorResultado;
 });
+
+const recomendacaoEstudo = gerarRecomendacaoEstudo(resultados);
 
 console.log("\nResultados da análise:");
 
@@ -111,3 +133,6 @@ resultados.forEach((resultado) => {
 console.log("\nVaga mais compatível:");
 console.log(`${melhorVaga.empresa} - ${melhorVaga.cargo}`);
 console.log(`Compatibilidade: ${melhorVaga.compatibilidade}%`);
+
+console.log("\nRecomendação de estudo:");
+console.log(recomendacaoEstudo);
