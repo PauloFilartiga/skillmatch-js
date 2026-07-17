@@ -52,6 +52,16 @@ const vagas = [
 console.log("\nLista de vagas:");
 console.log(vagas);
 
+function classificarCompatibilidade(percentual) {
+  if (percentual >= 80) {
+    return "Alta compatibilidade";
+  } else if (percentual >= 50) {
+    return "Média compatibilidade";
+  } else {
+    return "Baixa compatibilidade";
+  }
+}
+
 function calcularCompatibilidade(candidato, vaga) {
     const habilidadesEncontradas = vaga.requisitos.filter((requisito) => 
         candidato.habilidades.includes(requisito)
@@ -66,6 +76,7 @@ function calcularCompatibilidade(candidato, vaga) {
         cargo: vaga.cargo,
         requisitos: vaga.requisitos,
         compatibilidade: percentual,
+        classificacao: classificarCompatibilidade(percentual),
         habilidadesEncontradas
     };
 }
@@ -81,6 +92,7 @@ resultados.forEach((resultado) => {
     console.log(`Cargo: ${resultado.cargo}`);
     console.log(`Requisitos: ${resultado.requisitos.join(", ")}`);
     console.log(`Compatibilidade: ${resultado.compatibilidade}%`);
+    console.log(`Classificação: ${resultado.classificacao}`);
     console.log(`Habilidades encontradas: ${resultado.habilidadesEncontradas.join(", ")}`
     );
 });
