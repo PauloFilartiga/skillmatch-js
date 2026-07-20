@@ -13,6 +13,17 @@ class Vaga {
   }
 }
 
+class VagaFrontEnd extends Vaga {
+  constructor(id, empresa, cargo, requisitos, salario, modalidade, nivel) {
+    super(id, empresa, cargo, requisitos, salario, modalidade);
+    this.nivel = nivel;
+  }
+
+  exibirNivel() {
+    return `Nível da vaga: ${this.nivel}`;
+  }
+}
+
 const candidato = {
     nome: "Paulo",
     area: "Front-End",
@@ -25,31 +36,34 @@ console.log("Perfil do candidato:");
 console.log(candidato);
 
 const vagas = [
-    new Vaga(
+    new VagaFrontEnd(
      1,
      "TechStart",
      "Desenvolvedor Front-End Júnior",
      ["JavaScript", "GitHub", "Lógica de Programação"],
      2800,
-     "Remoto"
+     "Remoto",
+     "Júnior"
     ),
     
-    new Vaga(
+    new VagaFrontEnd(
      2,
      "CodeLab",
      "Estágio Front-End",
      ["JavaScript", "Kanban", "GitHub"],
      1800,
-     "Híbrido" 
+     "Híbrido",
+     "Estágio"
     ),
     
-    new Vaga(
+    new VagaFrontEnd(
      3,
      "WebSolutions",
      "Programador JavaScript Júnior",
      ["JavaScript", "Arrays", "Objetos", "Funções"],
      3000,
-     "Presencial"
+     "Presencial",
+     "Júnior"
     ),
 ];
 
@@ -57,6 +71,7 @@ console.log("\nResumo das vagas:");
 
 vagas.forEach((vaga) => {
   console.log(vaga.exibirResumo());
+  console.log(vaga.exibirNivel());
 });
 
 function classificarCompatibilidade(percentual) {
