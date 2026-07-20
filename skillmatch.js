@@ -67,6 +67,17 @@ const vagas = [
     ),
 ];
 
+//RF14 - Promise simulando uma busca em servidor
+function buscarVagasSimuladas() {
+  return new Promise((resolve) => {
+    console.log("\nBuscando vagas no servidor...");
+
+    setTimeout(() => {
+      resolve(vagas);
+    }, 1000);
+  });
+}
+
 console.log("\nResumo das vagas:");
 
 vagas.forEach((vaga) => {
@@ -148,7 +159,64 @@ function criarContadorDeAnalises() {
   }
 }
 
-const resultados = vagas.map((vaga) =>
+//RF14 - Async/Await
+async function iniciarSistema() {
+  try {
+    const vagasCarregadas = await buscarVagasSimuladas();
+
+    console.log("Vagas carregadas com sucesso!");
+
+    console.log("\nResumo das vagas:");
+
+    vagasCarregadas.forEach((vaga) => {
+      console.log(vaga.exibirResumo());
+      console.log(vaga.exibirNivel());
+    });
+
+    const resultados = vagasCarregadas.map((vaga) => 
+      calcularCompatibilidade(candidato, vaga)
+    );
+
+    const melhorVaga = resultados.reduce((melhorResultado, resultadoAtual) => {
+        return resultadoAtual.compatibilidade
+        ? resultadoAtual
+        : melhorResultado;
+      }
+    );
+
+    const recomendacaoEstudo = gerarRecomendacaoEstudo(resultados);
+
+    console.log("\nResultados da análise:");
+
+    const contarAnalise = criarContadorDeAnalises();
+
+    resultados.forEach((resultado) => {
+      console.log(`\nAnálise número: ${contarAnalise()}`);
+      console.log(`\nEmpresa: ${resultado.empresa}`);
+      console.log(`Cargo: ${resultado.cargo}`);
+      console.log(`Requisitos: ${resultado.requisitos.join(", ")}`);
+      console.log(`Compatibilidade: ${resultado.compatibilidade}%`);
+      console.log(`Classificação: ${resultado.classificacao}`);
+      console.log(`Habilidades encontradas: ${resultado.habilidadesEncontradas.join(", ")}`);
+      console.log(`Habilidades faltantes: ${resultado.habilidadesFaltantes.length > 0 ? resultado.habilidadesFaltantes.join(", ") : "Nenhuma"}`)
+    });
+
+    console.log("\nVaga mais compatível:");
+    console.log(`${melhorVaga.empresa} - ${melhorVaga.cargo}`);
+    console.log(`Compatibilidade: ${melhorVaga.compatibilidade}%`);
+
+    console.log("\nRecomendação de estudo:");
+    console.log(recomendacaoEstudo);
+
+    finalizarAnalise(candidato.nome, exibirMensagemFinal);
+  } catch (erro) {
+    console.error("Erro ao carregar as vagas:", erro);
+  }
+}
+
+iniciarSistema();
+
+/*const resultados = vagas.map((vaga) =>
     calcularCompatibilidade(candidato, vaga)
 );
 
@@ -182,4 +250,4 @@ console.log(`Compatibilidade: ${melhorVaga.compatibilidade}%`);
 console.log("\nRecomendação de estudo:");
 console.log(recomendacaoEstudo);
 
-finalizarAnalise(candidato.nome, exibirMensagemFinal);
+finalizarAnalise(candidato.nome, exibirMensagemFinal);*/
