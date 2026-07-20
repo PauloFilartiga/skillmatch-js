@@ -128,6 +128,26 @@ function gerarRecomendacaoEstudo(resultado) {
   return `Priorize estudar ${habilidadesParaEstudar.join(", ")}, pois esses conteúdos aparecem nas vagas analisadas.`;
 }
 
+// RF12 - Callback
+function finalizarAnalise(nomeCandidato, callback) {
+  console.log("\nAnálise finalizada.");
+  callback(nomeCandidato);
+}
+
+const exibirMensagemFinal = (nome) => {
+  console.log(`${nome}, revise suas habilidades faltantes e atualize seu plano de estudos.`);
+}
+
+//RF13 - Cloruse
+function criarContadorDeAnalises() {
+  let total = 0;
+
+  return function () {
+    total++;
+    return total;
+  }
+}
+
 const resultados = vagas.map((vaga) =>
     calcularCompatibilidade(candidato, vaga)
 );
@@ -142,7 +162,10 @@ const recomendacaoEstudo = gerarRecomendacaoEstudo(resultados);
 
 console.log("\nResultados da análise:");
 
+const contarAnalise = criarContadorDeAnalises();
+
 resultados.forEach((resultado) => {
+    console.log(`\nAnálise número: ${contarAnalise()}`);
     console.log(`\nEmpresa: ${resultado.empresa}`);
     console.log(`Cargo: ${resultado.cargo}`);
     console.log(`Requisitos: ${resultado.requisitos.join(", ")}`);
@@ -158,3 +181,5 @@ console.log(`Compatibilidade: ${melhorVaga.compatibilidade}%`);
 
 console.log("\nRecomendação de estudo:");
 console.log(recomendacaoEstudo);
+
+finalizarAnalise(candidato.nome, exibirMensagemFinal);
