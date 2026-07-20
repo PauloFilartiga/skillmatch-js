@@ -78,13 +78,6 @@ function buscarVagasSimuladas() {
   });
 }
 
-console.log("\nResumo das vagas:");
-
-vagas.forEach((vaga) => {
-  console.log(vaga.exibirResumo());
-  console.log(vaga.exibirNivel());
-});
-
 function classificarCompatibilidade(percentual) {
   if (percentual >= 80) {
     return "Alta compatibilidade";
@@ -178,7 +171,7 @@ async function iniciarSistema() {
     );
 
     const melhorVaga = resultados.reduce((melhorResultado, resultadoAtual) => {
-        return resultadoAtual.compatibilidade
+        return resultadoAtual.compatibilidade > melhorResultado.compatibilidade
         ? resultadoAtual
         : melhorResultado;
       }
@@ -215,39 +208,3 @@ async function iniciarSistema() {
 }
 
 iniciarSistema();
-
-/*const resultados = vagas.map((vaga) =>
-    calcularCompatibilidade(candidato, vaga)
-);
-
-const melhorVaga = resultados.reduce((melhorResultado, resultadoAtual) => {
-  return resultadoAtual.compatibilidade > melhorResultado.compatibilidade 
-  ? resultadoAtual 
-  : melhorResultado;
-});
-
-const recomendacaoEstudo = gerarRecomendacaoEstudo(resultados);
-
-console.log("\nResultados da análise:");
-
-const contarAnalise = criarContadorDeAnalises();
-
-resultados.forEach((resultado) => {
-    console.log(`\nAnálise número: ${contarAnalise()}`);
-    console.log(`\nEmpresa: ${resultado.empresa}`);
-    console.log(`Cargo: ${resultado.cargo}`);
-    console.log(`Requisitos: ${resultado.requisitos.join(", ")}`);
-    console.log(`Compatibilidade: ${resultado.compatibilidade}%`);
-    console.log(`Classificação: ${resultado.classificacao}`);
-    console.log(`Habilidades encontradas: ${resultado.habilidadesEncontradas.join(", ")}`);
-    console.log(`Habilidades faltantes: ${resultado.habilidadesFaltantes.length > 0 ? resultado.habilidadesFaltantes.join(", ") : "Nenhuma"}`)
-});
-
-console.log("\nVaga mais compatível:");
-console.log(`${melhorVaga.empresa} - ${melhorVaga.cargo}`);
-console.log(`Compatibilidade: ${melhorVaga.compatibilidade}%`);
-
-console.log("\nRecomendação de estudo:");
-console.log(recomendacaoEstudo);
-
-finalizarAnalise(candidato.nome, exibirMensagemFinal);*/
