@@ -4,9 +4,9 @@ O projeto foi organizado em um quadro Kanban no Notion.
 
 ## 📋 Fluxo de Trabalho
 
-- 🔘Sem começar
-- 🔵Em desenvolvimento
-- 🔴Em testes
+- 🔘Backlog
+- 🔵A fazer
+- 🔴Em andamento
 - 🟢Feito
 
 ## 🔗 Acesso ao Kanban
