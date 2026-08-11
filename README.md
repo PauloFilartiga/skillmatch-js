@@ -495,8 +495,8 @@ O vídeo apresenta:
 - os principais conceitos do código;
 - possíveis melhorias futuras.
 
-🔗 **Link do vídeo:**  
-`ADICIONAR_LINK_DO_VIDEO_AQUI`
+🔗 **Vídeo de apresentação no YouTube:**  
+[▶️ Assistir à apresentação do SkillMatch JS](https://youtu.be/VVkW4e5Wzr0)
 
 ---
 
