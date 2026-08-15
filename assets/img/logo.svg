@@ -1,0 +1,43 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 120 120"
+>
+  <title>Logo do SkillMatch Web</title>
+
+  <rect
+    x="8"
+    y="8"
+    width="104"
+    height="104"
+    rx="24"
+    fill="#2563eb"
+  />
+
+  <circle
+    cx="50"
+    cy="50"
+    r="26"
+    fill="none"
+    stroke="#ffffff"
+    stroke-width="8"
+  />
+
+  <line
+    x1="69"
+    y1="69"
+    x2="94"
+    y2="94"
+    stroke="#ffffff"
+    stroke-width="10"
+    stroke-linecap="round"
+  />
+
+  <polyline
+    points="36,50 46,60 64,39"
+    fill="none"
+    stroke="#ffffff"
+    stroke-width="7"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg>
