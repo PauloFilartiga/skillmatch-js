@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Compare suas habilidades com vagas de Front-End e descubra sua compatibilidade."
+    />
+
+    <title>SkillMatch Web | Compatibilidade com vagas Front-End</title>
+
+    <link rel="stylesheet" href="./assets/styles/index.style.css" />
+
+    <script type="module" src="./assets/scripts/main.js"></script>
+  </head>
+  <body>
+    <header id="inicio" class="cabecalho">
+      <nav class="navegacao" aria-label="Navegação principal">
+        <a
+          class="marca"
+          href="#inicio"
+          aria-label="SkillMatch Web - ir para o início"
+        >
+          <img
+            src="./assets/img/logo.svg"
+            alt=""
+            class="marca__logo"
+            width="64"
+            height="64"
+          />
+          <span>SkillMatch Web</span>
+        </a>
+        <ul class="navegacao__lista">
+          <li>
+            <a href="#perfil">Meu perfil</a>
+          </li>
+          <li>
+            <a href="#resultados">Resultados</a>
+          </li>
+        </ul>
+      </nav>
+
+      <section class="apresentacao" aria-labelledby="titulo-principal">
+        <h1 id="titulo-principal">
+          Descubra quais vagas combinam com o seu perfil
+        </h1>
+        <p>
+          Informe suas habilidades e encontre as melhores oportunidades para
+          começar sua carreira em Front-End.
+        </p>
+      </section>
+    </header>
+
+    <main id="conteudo-principal">
+      <!-- PERFIL -->
+      <section id="perfil" class="secao-perfil" aria-labelledby="titulo-perfil">
+        <h2 id="titulo-perfil">Monte seu perfil</h2>
+        <p>
+          Preencha seus dados para comparar seu perfil com as vagas disponíveis.
+        </p>
+
+        <form id="formulario-perfil" novalidate>
+          <div class="campo-formulario">
+            <label for="nome">Nome</label>
+            <input
+              type="text"
+              name="nome"
+              id="nome"
+              autocomplete="name"
+              required
+              aria-describedby="erro-nome"
+            />
+
+            <span
+              id="erro-nome"
+              class="mensagem__erro"
+              aria-live="polite"
+            ></span>
+          </div>
+
+          <div class="campo-formulario">
+            <label for="area">Área de interesse</label>
+            <input
+              type="text"
+              name="area"
+              id="area"
+              placeholder="Ex.: Front-End"
+              required
+              aria-describedby="erro-area"
+            />
+
+            <span
+              id="erro-area"
+              class="mensagem__erro"
+              aria-live="polite"
+            ></span>
+          </div>
+
+          <div class="campo-formulario">
+            <label for="habilidades">Habilidades</label>
+            <input
+              type="text"
+              id="habilidades"
+              name="habilidades"
+              placeholder="Ex.: HTML, CSS, JavaScript"
+              required
+              aria-describedby="ajuda-habilidades erro-habilidades"
+            />
+
+            <small id="ajuda-habilidades"
+              >Separe cada habilidade com uma vírgula.</small
+            >
+            <span
+              id="erro-habilidades"
+              class="mensagem__erro"
+              aria-live="polite"
+            ></span>
+          </div>
+
+          <div class="campo-formulario">
+            <label for="experiencia">Experiência em meses</label>
+            <input
+              type="number"
+              id="experiencia"
+              name="experiencia"
+              min="0"
+              step="1"
+              required
+              aria-describedby="erro-experiencia"
+            />
+
+            <span
+              id="erro-experiencia"
+              class="mensagem__erro"
+              aria-live="polite"
+            ></span>
+          </div>
+
+          <button type="submit">Analisar compatibilidade</button>
+        </form>
+      </section>
+      <!-- RESULTADOS -->
+      <section
+        id="resultados"
+        class="secao-resultados"
+        aria-labelledby="titulo-resultados"
+      >
+        <h2 id="titulo-resultados">Resultado da análise</h2>
+        <p
+          id="mensagem-status"
+          class="mensagem-status"
+          role="status"
+          aria-live="polite"
+        >
+          Preencha seu perfil para iniciar a análise.
+        </p>
+
+        <div id="resumo-perfil" class="resumo-perfil"></div>
+
+        <section
+          id="destaque-resultado"
+          class="destaque-resultado"
+          aria-labelledby="titulo-melhor-vaga"
+          hidden
+        >
+          <h3 id="titulo-melhor-vaga">Melhor oportunidade</h3>
+
+          <div id="melhor-vaga"></div>
+
+          <p id="recomendacao-estudo"></p>
+        </section>
+        <div id="lista-vagas" class="lista-vagas" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <footer class="rodape">
+      <p>SkillMatch Web - desenvolvido por Paulo Filartiga.</p>
+    </footer>
+  </body>
+</html>
