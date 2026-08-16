@@ -1,11 +1,26 @@
 // Fetch - coordenação no main.js
 import { carregarVagas } from "./dados.js";
 
-import { criarVagasFrontEnd } from "./motor.js";
+import {
+  analisarVagas,
+  criarContadorDeAnalises,
+  criarVagasFrontEnd,
+  encontrarMelhorVaga,
+  finalizarAnalise,
+  gerarRecomendacaoEstudo,
+} from "./motor.js";
 
-import { configurarFormulario, exibirMensagemStatus } from "./ui.js";
+import {
+  configurarFormulario,
+  exibirMensagemStatus,
+  renderizarMelhorVaga,
+  renderizarResumoPerfil,
+  renderizarVagas,
+} from "./ui.js";
 
 let vagasCarregadas = [];
+
+const contarAnalise = criarContadorDeAnalises();
 
 async function iniciarAplicacao() {
   exibirMensagemStatus("Carregando vagas...");
@@ -41,11 +56,31 @@ function processarPerfil(candidato) {
     return;
   }
 
-  exibirMensagemStatus(
-    `${candidato.nome}, seu perfil foi validado com sucesso.`,
-    "sucesso",
-  );
+  const resultados = analisarVagas(candidato, vagasCarregadas);
+
+  if (resultados.length === 0) {
+    exibirMensagemStatus("Nada encontrado para o perfil informado.");
+
+    return;
+  }
+
+  const melhorVaga = encontrarMelhorVaga(resultados);
+
+  const recomendacao = gerarRecomendacaoEstudo(resultados);
+
+  const numeroAnalise = contarAnalise();
+
+  renderizarResumoPerfil(candidato, numeroAnalise);
+  renderizarVagas(resultados);
+  renderizarMelhorVaga(melhorVaga, recomendacao);
+
+  const mensagemFinal = finalizarAnalise(candidato.nome, (nome) => {
+    return `${nome}, análise ${numeroAnalise} concluída. Confira os resultados abaixo.`;
+  });
+
+  exibirMensagemStatus(mensagemFinal, "sucesso");
 }
+
 configurarFormulario(processarPerfil);
 
 iniciarAplicacao();

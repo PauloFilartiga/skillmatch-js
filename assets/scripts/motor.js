@@ -135,8 +135,8 @@ export function analisarVagas(candidato, vagas) {
   return vagas.map((vaga) => vaga.calcularCompatibilidade(candidato));
 }
 
-export function encontrarMelhorVaga(resultado) {
-  if (resultado.length === 0) {
+export function encontrarMelhorVaga(resultados) {
+  if (resultados.length === 0) {
     return null;
   }
 
