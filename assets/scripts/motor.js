@@ -179,3 +179,18 @@ export function gerarRecomendacaoEstudo(resultados) {
     ", ",
   )}. Essas habilidades aparecem com maior frequência entre os requisitos que faltam.`;
 }
+
+//Callback
+export function finalizarAnalise(nomeCandidato, callback) {
+  return callback(nomeCandidato);
+}
+
+//Closure
+export function criarContadorDeAnalises() {
+  let total = 0;
+
+  return function contarAnalise() {
+    total += 1;
+    return total;
+  };
+}
