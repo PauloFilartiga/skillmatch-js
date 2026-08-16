@@ -1,5 +1,5 @@
 // Fetch - coordenação no main.js
-import { carregarVagas } from "./dados.js";
+import { carregarPerfilSalvo, carregarVagas, salvarPerfil } from "./dados.js";
 
 import {
   analisarVagas,
@@ -13,6 +13,7 @@ import {
 import {
   configurarFormulario,
   exibirMensagemStatus,
+  preencherFormulario,
   renderizarMelhorVaga,
   renderizarResumoPerfil,
   renderizarVagas,
@@ -50,6 +51,8 @@ async function iniciarAplicacao() {
   }
 }
 function processarPerfil(candidato) {
+  salvarPerfil(candidato);
+
   if (vagasCarregadas.length === 0) {
     exibirMensagemStatus("Aguarde o carregamento das vagas.", "erro");
 
@@ -80,6 +83,18 @@ function processarPerfil(candidato) {
 
   exibirMensagemStatus(mensagemFinal, "sucesso");
 }
+
+function restaurarPerfil() {
+  const perfilSalvo = carregarPerfilSalvo();
+
+  if (perfilSalvo === null) {
+    return;
+  }
+
+  preencherFormulario(perfilSalvo);
+}
+
+restaurarPerfil();
 
 configurarFormulario(processarPerfil);
 

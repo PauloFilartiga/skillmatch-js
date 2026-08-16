@@ -226,6 +226,11 @@ button {
   font-weight: 700;
 }
 
+.resumo-perfil:empty,
+.lista-vagas:empty {
+  display: none;
+}
+
 .resumo-perfil {
   margin-top: 1rem;
   padding: 1rem;

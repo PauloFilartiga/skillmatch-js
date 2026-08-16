@@ -1,6 +1,8 @@
 // Fetch - módulo de dados
 const CAMINHO_VAGAS = "./assets/dados/vagas.json";
 
+const CHAVE_PERFIL = "skillmatch-perfil";
+
 export async function carregarVagas() {
   const resposta = await fetch(CAMINHO_VAGAS);
 
@@ -17,4 +19,27 @@ export async function carregarVagas() {
   }
 
   return vagas;
+}
+
+// funções de persistência
+export function salvarPerfil(perfil) {
+  const perfilEmTexto = JSON.stringify(perfil);
+
+  localStorage.setItem(CHAVE_PERFIL, perfilEmTexto);
+}
+
+export function carregarPerfilSalvo() {
+  const perfilEmTexto = localStorage.getItem(CHAVE_PERFIL);
+
+  if (perfilEmTexto === null) {
+    return null;
+  }
+
+  try {
+    return JSON.parse(perfilEmTexto);
+  } catch {
+    localStorage.removeItem(CHAVE_PERFIL);
+
+    return null;
+  }
 }

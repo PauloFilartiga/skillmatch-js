@@ -71,6 +71,27 @@ export function obterPerfilFormulario() {
   };
 }
 
+export function preencherFormulario(perfil) {
+  if (!perfil) {
+    return;
+  }
+
+  campoNome.value = perfil.nome || "";
+  campoArea.value = perfil.area || "";
+
+  if (Array.isArray(perfil.habilidades)) {
+    campoHabilidades.value = perfil.habilidades.join(", ");
+  } else {
+    campoHabilidades.value = "";
+  }
+
+  if (Number.isInteger(perfil.experienciaMeses)) {
+    campoExperiencia.value = perfil.experienciaMeses;
+  } else {
+    campoExperiencia.value = "";
+  }
+}
+
 function validarPerfil(perfil) {
   limparErrosFormulario();
 
