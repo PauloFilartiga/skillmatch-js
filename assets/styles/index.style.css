@@ -257,8 +257,8 @@ button {
 }
 
 a:focus-visible,
-input:focus-visible,
-button:focus-visible {
+button:focus-visible,
+input:focus {
   outline: 0.2rem solid #f59e0b;
   outline-offset: 0.2rem;
 }

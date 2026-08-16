@@ -3,7 +3,7 @@ import { carregarVagas } from "./dados.js";
 
 import { criarVagasFrontEnd } from "./motor.js";
 
-import { exibirMensagemStatus } from "./ui.js";
+import { configurarFormulario, exibirMensagemStatus } from "./ui.js";
 
 let vagasCarregadas = [];
 
@@ -34,5 +34,18 @@ async function iniciarAplicacao() {
     );
   }
 }
+function processarPerfil(candidato) {
+  if (vagasCarregadas.length === 0) {
+    exibirMensagemStatus("Aguarde o carregamento das vagas.", "erro");
+
+    return;
+  }
+
+  exibirMensagemStatus(
+    `${candidato.nome}, seu perfil foi validado com sucesso.`,
+    "sucesso",
+  );
+}
+configurarFormulario(processarPerfil);
 
 iniciarAplicacao();
