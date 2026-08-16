@@ -1,0 +1,68 @@
+[
+    {
+        "id": 1,
+        "empresa": "TechStart",
+        "cargo": "Desenvolvedor Front-End Júnior",
+        "requisitos": [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "GitHub"
+        ],
+        "salario": 3200,
+        "modalidade": "Remoto",
+        "stack": "JavaScript",
+        "senioridade": "Júnior",
+        "experienciaMinimaMeses": 6
+    },
+    {
+        "id": 2,
+        "empresa": "CodeLab",
+        "cargo": "Estágio em Desenvolvimento Front-End",
+        "requisitos": [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "Lógica de Programação"
+        ],
+        "salario": 1800,
+        "modalidade": "Híbrido",
+        "stack": "Desenvolvimento Web",
+        "senioridade": "Estágio",
+        "experienciaMinimaMeses": 0
+    },
+    {
+        "id": 3,
+        "empresa": "WebCraft",
+        "cargo": "Desenvolvedor React Júnior",
+        "requisitos": [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "React",
+            "GitHub"
+        ],
+        "salario": 4200,
+        "modalidade": "Remoto",
+        "stack": "React",
+        "senioridade": "Júnior",
+        "experienciaMinimaMeses": 12
+    },
+    {
+        "id": 4,
+        "empresa": "PixelCode",
+        "cargo": "Desenvolvedor de Interfaces Júnior",
+        "requisitos": [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "Flexbox",
+            "Acessibilidade"
+        ],
+        "salario": 3600,
+        "modalidade": "Presencial",
+        "stack": "Interface Web",
+        "senioridade": "Júnior",
+        "experienciaMinimaMeses": 6
+    }
+]
