@@ -683,18 +683,13 @@ Não foram utilizados React, TypeScript, frameworks, bibliotecas externas, ferra
 
 ---
 
-## 🎥 Vídeo de apresentação
+## 🎥 Vídeos de apresentação
 
-O vídeo da versão web será gravado após a conclusão de todas as etapas do projeto.
+Os vídeos apresentam o funcionamento e as principais etapas das versões de console e web do projeto.
 
-O link será adicionado aqui antes da entrega no AVA.
+* [▶️ Versão 1 — SkillMatch executado no console](https://youtu.be/VVkW4e5Wzr0)
+* [▶️ Versão 2 — SkillMatch Web](https://youtu.be/JrjGHbuY-38)
 
-<details>
-<summary><strong>Vídeo da versão original executada no console</strong></summary>
-
-[▶️ Assistir à apresentação da versão de console](https://youtu.be/VVkW4e5Wzr0)
-
-</details>
 
 ---
 
@@ -721,6 +716,9 @@ Estudante de Engenharia de Software e desenvolvedor em formação, com interesse
 
 🔗 **GitHub:**
 https://github.com/PauloFilartiga
+
+🔗 **GitHub Pages:**
+https://paulofilartiga.github.io/skillmatch-js/
 
 ---
 
